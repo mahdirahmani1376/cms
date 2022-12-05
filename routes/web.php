@@ -21,5 +21,15 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/admin', [AdminsController::class, 'index'])->name('admin.index');
-Route::get('/post',[PostController::class,'show'])->name('post');
+//Route::get('/post',[PostController::class,'index'])->name('post');
+Route::get('/post/{post}',[PostController::class,'show'])->name('post');
+Route::middleware('auth')->prefix('admin')->group(function(){
+    Route::get('/', [AdminsController::class, 'index'])->name('admin.index');
+
+    Route::get('/posts',[PostController::class,'index'])->name('post.index');
+    Route::get('/posts/create',[PostController::class,'create'])->name('post.create');
+    Route::post('/posts',[PostController::class,'store'])->name('post.store');
+    Route::delete('/posts/{post}',[PostController::class,'destroy'])->name('post.destroy');
+    Route::get('/posts/{post}/edit',[PostController::class,'edit'])->name('post.edit');
+    Route::patch('/posts/{post}',[PostController::class,'update'])->name('post.update');
+});

@@ -7,6 +7,8 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Database\Seeder;
+use Illuminate\Testing\Fluent\Concerns\Has;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,11 +24,11 @@ class DatabaseSeeder extends Seeder
                 'user_id'=>$user->id,
             ]);
         });
-        
+
         User::factory()->create([
             'name' => 'mahdi rahmani',
             'email' => 'rahmanimahdi16@gmail.com',
-            'password'=>'Ma13R18@'
+            'password'=> Hash::make('Ma13R18@'),
         ]);
     }
 }

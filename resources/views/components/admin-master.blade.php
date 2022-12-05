@@ -55,19 +55,9 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
-          </div>
-        </div>
-      </li>
+        <x-admin-sidebar-posts-links>
+
+        </x-admin-sidebar-posts-links>
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
@@ -381,14 +371,16 @@
   </div>
 
   <!-- Bootstrap core JavaScript-->
-  <script src="{{ asset('vendor/jquery/jquery.js')}}"></script>
-  <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.js')}}"></script>
+  <script src="{{ asset('vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="{{ asset('vendor/jquery-easing/jquery.easing.js')}}"></script>
+  <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="{{ asset('js/sb-admin-2.js"')}}></script>
+
+  @yield('scripts')
 
 </body>
 
