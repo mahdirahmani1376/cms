@@ -25,10 +25,11 @@ class DatabaseSeeder extends Seeder
             ]);
         });
 
-        User::factory()->create([
+        $mahdi = User::factory()->create([
             'name' => 'mahdi rahmani',
             'email' => 'rahmanimahdi16@gmail.com',
             'password'=> Hash::make('Ma13R18@'),
         ]);
+        Post::factory(10)->create(['user_id' => $mahdi->id]);
     }
 }

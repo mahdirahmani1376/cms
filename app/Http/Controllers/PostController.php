@@ -10,7 +10,8 @@ class PostController extends Controller
 {
 
     public function index(){
-        return view('admin.posts.index',['posts'=>Post::all()]);
+        $posts = Auth()->user()->posts()->paginate(10);
+        return view('admin.posts.index',['posts'=>$posts]);
     }
 
     public function show(Post $post){
@@ -40,6 +41,8 @@ class PostController extends Controller
     }
 
     public function edit(Post $post){
+//        $this->authorize('view',$post);
+
         return view('admin.posts.edit',['post'=>$post]);
     }
 
@@ -62,6 +65,7 @@ class PostController extends Controller
             $input['post_image'] = request('post_image')->store('images');
         }
 
+        $this->authorize('update',$post);
         $post->update($input);
 
         Session::flash('post-updated-message','post with title was updated'.$input['title']);

@@ -43,8 +43,8 @@ class Post extends Model
 //        $this->attributes['post_image'] = asset($value);
 //    }
 
-    public function getPostImageAttrbitue($value){
-        return asset($value);
+    public function getPostImageAttribute($value){
+        return asset('storage/'.$value);
     }
 
 }

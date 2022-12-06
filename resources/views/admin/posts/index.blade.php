@@ -50,9 +50,11 @@
                                 <td>{{ $post->created_at->diffForHumans() }}</td>
                                 <td>{{ $post->updated_at->diffForHumans() }}</td>
                                 <td>
+                                    @can('view',$post)
                                     {!! Form::open(['route'=>['post.destroy',$post->id],'method'=>'DELETE']) !!}
                                     {!! Form::submit("Delete",["class"=>"btn btn-danger"]) !!}
                                     {!! Form::close() !!}
+                                    @endcan
                                 </td>
                             </tr>
                             @endforeach
@@ -61,13 +63,16 @@
                 </div>
             </div>
         </div>
+        {{ $posts->links() }}
     @endsection
+
     @section('scripts')
         <!-- Page level plugins -->
         <script src="{{ asset('vendor/datatables/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
         <!-- Page level custom scripts -->
-        <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>
+{{--        <script src="{{ asset('js/demo/datatables-demo.js') }}"></script>--}}
+
     @endsection
 </x-admin-master>
